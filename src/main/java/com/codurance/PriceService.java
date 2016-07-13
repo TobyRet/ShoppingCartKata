@@ -1,9 +1,9 @@
 package com.codurance;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.math.BigDecimal;
 
 public class PriceService {
-    public String priceFor(ProductId productId, int quantity) {
-        throw new NotImplementedException();
+    public BigDecimal priceFor(ProductId productId) {
+        return productId.getId() == 1 ? new BigDecimal("5.00") : new BigDecimal("7.00");
     }
 }

@@ -1,10 +1,12 @@
 package com.codurance.feature;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import com.codurance.Basket;
 import com.codurance.BasketItem;
 import com.codurance.BasketRepository;
 import com.codurance.Clock;
+import com.codurance.PriceService;
 import com.codurance.ProductId;
 import com.codurance.ShoppingCartService;
 import com.codurance.UserId;
@@ -26,19 +28,23 @@ public class ShoppingCartFeature {
     @Test
     public void shouldAddItemsToCart() {
         BasketRepository basketRepository = new BasketRepository(clock, new HashMap<>());
-        ShoppingCartService shoppingCartService = new ShoppingCartService(basketRepository);
+        PriceService priceService = new PriceService();
+        ShoppingCartService shoppingCartService = new ShoppingCartService(basketRepository, priceService);
         UserId userId = new UserId(1);
+
         String basketCreationDate = "2016-06-06";
         ProductId theHobbitProductId = new ProductId(1);
         int quantityForTheHobbit = 2;
         ProductId breakingBadProductId = new ProductId(2);
         int quantityForBreakingBad = 5;
-        BasketItem firstBasketItem = new BasketItem(theHobbitProductId, quantityForTheHobbit);
-        BasketItem secondBasketItem = new BasketItem(breakingBadProductId, quantityForBreakingBad);
+        BigDecimal priceForTheHobbit = new BigDecimal("5.00");
+        BigDecimal priceForBreakingBad = new BigDecimal("7.00");
+        BasketItem expectedFirstBasketItem = new BasketItem(theHobbitProductId, quantityForTheHobbit, priceForTheHobbit);
+        BasketItem expectedSecondBasketItem = new BasketItem(breakingBadProductId, quantityForBreakingBad, priceForBreakingBad);
         Basket expectedBasket = new Basket(basketCreationDate);
 
-        expectedBasket.add(firstBasketItem);
-        expectedBasket.add(secondBasketItem);
+        expectedBasket.add(expectedFirstBasketItem);
+        expectedBasket.add(expectedSecondBasketItem);
 
         given(clock.dateNow()).willReturn(basketCreationDate);
 

@@ -9,6 +9,10 @@ public class ProductId {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

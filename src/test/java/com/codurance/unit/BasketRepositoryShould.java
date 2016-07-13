@@ -1,5 +1,6 @@
 package com.codurance.unit;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import com.codurance.Basket;
 import com.codurance.BasketItem;
@@ -39,7 +40,8 @@ public class BasketRepositoryShould {
         userId = new UserId(1);
         productIdForBreakingBad = new ProductId(1);
         quantityForBreakingBad = 2;
-        firstBasketItem = new BasketItem(productIdForBreakingBad, quantityForBreakingBad);
+        BigDecimal priceForBreakingBad = new BigDecimal("7.00");
+        firstBasketItem = new BasketItem(productIdForBreakingBad, quantityForBreakingBad, priceForBreakingBad);
         basketCreationDate = "2016-06-08";
         expectedBasket = new Basket(basketCreationDate);
         expectedBasket.add(firstBasketItem);
@@ -63,7 +65,8 @@ public class BasketRepositoryShould {
         ProductId productIdForTheHobbit = new ProductId(2);
         int quantityForTheHobbit = 1;
 
-        BasketItem secondBasketItem = new BasketItem(productIdForTheHobbit, quantityForTheHobbit);
+        BigDecimal priceForTheHobbit = new BigDecimal("5.00");
+        BasketItem secondBasketItem = new BasketItem(productIdForTheHobbit, quantityForTheHobbit, priceForTheHobbit);
 
         Basket updatedExpectedBasket = new Basket(basketCreationDate);
         updatedExpectedBasket.add(firstBasketItem);

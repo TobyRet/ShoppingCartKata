@@ -1,14 +1,20 @@
 package com.codurance;
 
+import java.math.BigDecimal;
+
 public class ShoppingCartService {
     private BasketRepository basketRepository;
+    private PriceService priceService;
 
-    public ShoppingCartService(BasketRepository basketRepository) {
+    public ShoppingCartService(BasketRepository basketRepository, PriceService priceService) {
         this.basketRepository = basketRepository;
+        this.priceService = priceService;
     }
 
     public void addItem(com.codurance.UserId userId, ProductId productId, int quantity) {
-        BasketItem basketItem = new BasketItem(productId, quantity);
+        BigDecimal price = priceService.priceFor(productId);
+        BasketItem basketItem = new BasketItem(productId, quantity, price);
+
         basketRepository.addBasketItem(userId, basketItem);
     }
 

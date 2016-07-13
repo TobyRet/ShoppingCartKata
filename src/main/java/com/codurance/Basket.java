@@ -1,5 +1,6 @@
 package com.codurance;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,10 @@ public class Basket {
 
     public void add(BasketItem basketItem) {
         basketItems.add(basketItem);
+    }
+
+    public String total() {
+        return  basketItems.stream().map(basketItem -> (basketItem.getPrice().multiply(new BigDecimal(basketItem.getQuantity())))).reduce(BigDecimal.ZERO, BigDecimal::add).toPlainString();
     }
 
     @Override
