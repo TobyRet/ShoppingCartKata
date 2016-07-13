@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import com.codurance.Basket;
 import com.codurance.BasketItem;
-import com.codurance.BasketNotFoundException;
 import com.codurance.BasketRepository;
 import com.codurance.Clock;
 import com.codurance.ProductId;
@@ -50,7 +49,7 @@ public class BasketRepositoryShould {
     }
 
     @Test
-    public void addItemsToNewBasketIfItDoesNotExist() throws BasketNotFoundException {
+    public void addItemsToNewBasketIfItDoesNotExist() {
         basketRepository.addBasketItem(userId, firstBasketItem);
 
         verify(clock).dateNow();
