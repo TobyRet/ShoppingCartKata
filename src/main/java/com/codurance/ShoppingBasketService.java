@@ -2,11 +2,11 @@ package com.codurance;
 
 import java.math.BigDecimal;
 
-public class ShoppingCartService {
+public class ShoppingBasketService {
     private BasketRepository basketRepository;
     private PriceService priceService;
 
-    public ShoppingCartService(BasketRepository basketRepository, PriceService priceService) {
+    public ShoppingBasketService(BasketRepository basketRepository, PriceService priceService) {
         this.basketRepository = basketRepository;
         this.priceService = priceService;
     }

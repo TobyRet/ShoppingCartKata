@@ -23,3 +23,8 @@ Products available (in-memory repository):
 - DVDs
    - 20001: Game of Thrones - £9.00 
    - 20110: Breaking Bad - £7.00
+   
+### Scenario 2 - Logging
+- Log items added to shopping cart on the console: 
+    [BASKET CREATED]: Created[<"YYYY-07-12">], User[<ID>]
+    [ITEM ADDED TO SHOPPING CART]: Added[<"YYYY-07-12">], User[<ID>], Product[ID], Quantity[<N>, Price[<£12.00>]

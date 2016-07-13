@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ShoppingCartFeature {
+public class ShoppingBasketFeature {
 
     @Mock
     Clock clock;
@@ -52,5 +52,10 @@ public class ShoppingCartFeature {
         shoppingCartService.addItem(userId, breakingBadProductId, quantityForBreakingBad);
 
         assertThat(shoppingCartService.basketFor(userId), is(expectedBasket));
+    }
+
+    @Test
+    public void shouldLogWhenAnItemHasBeenAddedToABasket() {
+
     }
 }

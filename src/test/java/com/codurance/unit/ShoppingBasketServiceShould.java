@@ -19,7 +19,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ShoppingCartServiceShould {
+public class ShoppingBasketServiceShould {
 
     @Mock
     BasketRepository basketRepository;
